@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loja de Celulares</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      padding: 10px;
+      color: white;
+    }
+
+    header nav ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    header nav ul li {
+      display: inline;
+      margin-right: 20px;
+    }
+
+    header nav ul li a {
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    section {
+      padding: 20px;
+      display: none;
+    }
+
+    .active {
+      display: block;
+    }
+
+    .product {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin: 10px;
+      display: inline-block;
+      text-align: center;
+      width: 200px;
+    }
+
+    .product img {
+      width: 100%;
+      height: auto;
+    }
+
+    #cartItems {
+      margin-top: 20px;
+    }
+
+    button {
+      background-color: #28a745;
+      color: white;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    .remove-btn {
+      background-color: #dc3545;
+      color: white;
+      padding: 5px 10px;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .remove-btn:hover {
+      background-color: #c82333;
+    }
+  </style>
+</head>
+<body>
+  <!-- Cabeçalho -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="javascript:void(0)" onclick="showSection('home')">Início</a></li>
+        <li><a href="javascript:void(0)" onclick="showSection('catalog')">Catálogo</a></li>
+        <li><a href="javascript:void(0)" onclick="showSection('cart')">Carrinho</a></li>
+        <li><a href="javascript:void(0)" onclick="showSection('checkout')">Checkout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Início -->
+  <section id="home" class="active">
+    <h1>TECPHONE</h1>
+    <p>Encontre os melhores celulares com os melhores preços!</p>
+  </section>
+
+  <!-- Catálogo de Produtos -->
+  <section id="catalog">
+    <h2>Catálogo de Produtos</h2>
+    <div class="product" onclick="addToCart('Poco X6', 1680, 'https://gazin-images.gazin.com.br/w3E6sCU1rc59TznQYAUtKMOtnQU=/1920x/filters:format(webp):quality(75)/https://gazin-images.gazin.com.br/rfSTzayUZI9d8y2B5-qZVYIaN04=/filters:format(webp):quality(75)/https://gazin-marketplace.s3.amazonaws.com/midias/imagens/2024/08/smartphone-xiaomi-poco-x6-5g-667-octa-core-256gb-8gb-camera-tripla-152408052122.jpg')">
+      <img src="https://gazin-images.gazin.com.br/w3E6sCU1rc59TznQYAUtKMOtnQU=/1920x/filters:format(webp):quality(75)/https://gazin-images.gazin.com.br/rfSTzayUZI9d8y2B5-qZVYIaN04=/filters:format(webp):quality(75)/https://gazin-marketplace.s3.amazonaws.com/midias/imagens/2024/08/smartphone-xiaomi-poco-x6-5g-667-octa-core-256gb-8gb-camera-tripla-152408052122.jpg" alt="Poco X6">
+      <p>Poco X6 - R$ 1680</p>
+    </div>
+    <div class="product" onclick="addToCart('Poco X6 Pro', 2200, 'https://images.tcdn.com.br/img/img_prod/962703/poco_x6_pro_512gb_12gb_5g_3_cores_1921_1_c57a89604928d46cf5801ae5ef2b8988.jpg')">
+      <img src="https://images.tcdn.com.br/img/img_prod/962703/poco_x6_pro_512gb_12gb_5g_3_cores_1921_1_c57a89604928d46cf5801ae5ef2b8988.jpg" alt="Poco X6 Pro">
+      <p>Poco X6 Pro - R$ 2200</p>
+    </div>
+    <div class="product" onclick="addToCart('Poco X7', 2600, 'https://reidocelular.com.br/wp-content/uploads/2025/01/as-2025-01-13T090207.098.png')">
+      <img src="https://reidocelular.com.br/wp-content/uploads/2025/01/as-2025-01-13T090207.098.png" alt="Poco X7">
+      <p>Poco X7 - R$ 2600</p>
+    </div>
+    <div class="product" onclick="addToCart('Poco X7 Pro', 3100, 'https://a-static.mlcdn.com.br/1500x1500/smartphone-xiaomi-poco-x7-5g-256gb-8gb-ram-dual-sim-tela-6-67-prata/bendezgames/a9efe5c0d2c411ef805a4201ac18503c/b486088e78b776ebef1208a94df93036.jpeg')">
+      <img src="https://a-static.mlcdn.com.br/1500x1500/smartphone-xiaomi-poco-x7-5g-256gb-8gb-ram-dual-sim-tela-6-67-prata/bendezgames/a9efe5c0d2c411ef805a4201ac18503c/b486088e78b776ebef1208a94df93036.jpeg" alt="Poco X7 Pro">
+      <p>Poco X7 Pro - R$ 3100</p>
+    </div>
+  </section>
+
+  <!-- Carrinho -->
+  <section id="cart">
+    <h2>Seu Carrinho</h2>
+    <div id="cartItems"></div>
+    <p id="totalPrice">Total: R$ 0</p>
+    <button onclick="checkout()">Finalizar Compra</button>
+  </section>
+
+  <!-- Checkout -->
+  <section id="checkout">
+    <h2>Checkout</h2>
+    <form>
+      <label for="name">Nome:</label>
+      <input type="text" id="name" name="name" required><br>
+      <label for="address">Endereço:</label>
+      <input type="text" id="address" name="address" required><br>
+      <label for="payment">Método de pagamento:</label>
+      <select id="payment" name="payment" required>
+        <option value="creditCard">Cartão de Crédito</option>
+        <option value="debitCard">Cartão de Débito</option>
+        <option value="pix">Pix</option>
+      </select><br>
+      <button type="submit">Pagar</button>
+    </form>
+  </section>
+
+  <script>
+    let cart = [];
+    let total = 0;
+
+    // Função para exibir a seção correta
+    function showSection(sectionId) {
+      // Oculta todas as seções
+      const sections = document.querySelectorAll('section');
+      sections.forEach(section => section.classList.remove('active'));
+
+      // Exibe a seção desejada
+      const activeSection = document.getElementById(sectionId);
+      activeSection.classList.add('active');
+    }
+
+    function addToCart(productName, price, image) {
+      cart.push({ productName, price, image });
+      total += price;
+      updateCart();
+    }
+
+    function removeFromCart(index) {
+      total -= cart[index].price;
+      cart.splice(index, 1);
+      updateCart();
+    }
+
+    function updateCart() {
+      const cartItems = document.getElementById('cartItems');
+      const totalPrice = document.getElementById('totalPrice');
+
+      cartItems.innerHTML = cart.map((item, index) => `
+        <div>
+          <img src="${item.image}" alt="${item.productName}" width="50">
+          <p>${item.productName} - R$ ${item.price}</p>
+          <button class="remove-btn" onclick="removeFromCart(${index})">Remover</button>
+        </div>
+      `).join('');
+      
+      totalPrice.textContent = `Total: R$ ${total}`;
+    }
+
+    function checkout() {
+      alert('Processando pagamento...');
+      // Aqui você pode integrar a API de pagamento (como Stripe, PagSeguro, MercadoPago, etc.)
+      cart = [];
+      total = 0;
+      updateCart();
+      alert('Compra realizada com sucesso!');
+    }
+  </script>
+</body>
+</html>
