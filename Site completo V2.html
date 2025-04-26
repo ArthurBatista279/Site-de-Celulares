@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TecPhone - Loja de Celulares</title>
+    
+    <!-- Importando fonte Orbitron do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Orbitron', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        
+        header {
+            background-color: #333;
+            padding: 10px;
+            color: white;
+            text-align: center;
+        }
+
+        header nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        header nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        section {
+            padding: 20px;
+            text-align: center;
+            display: none; /* Inicialmente escondido */
+        }
+
+        .active {
+            display: block; /* Exibe a aba ativa */
+        }
+
+        .product {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px;
+            display: inline-block;
+            text-align: center;
+            width: 200px;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+        }
+
+        .cart-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 20px;
+        }
+
+        .cart-items {
+            margin-top: 20px;
+        }
+
+        .remove-btn {
+            background-color: #dc3545;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .remove-btn:hover {
+            background-color: #c82333;
+        }
+
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            margin-top: 20px;
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        select, button {
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 16px;
+            font-family: 'Orbitron', Arial, sans-serif;
+            width: 100%;
+            max-width: 400px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .catalog-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <nav>
+            <ul>
+                <li><a onclick="openTab('home')">Início</a></li>
+                <li><a onclick="openTab('catalog1')">Catálogo 1</a></li>
+                <li><a onclick="openTab('catalog2')">Catálogo 2</a></li>
+                <li><a onclick="openTab('cart')">Carrinho</a></li>
+                <li><a onclick="openTab('checkout')">Checkout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Home -->
+    <section id="home" class="active">
+        <h1>TecPhone</h1>
+        <p>Encontre os melhores celulares com os melhores preços!</p>
+    </section>
+
+    <!-- Catálogo 1 -->
+    <section id="catalog1">
+        <h2>Catálogo de Produtos - Série Poco</h2>
+        <div class="catalog-section">
+            <div class="product" onclick="addToCart('Poco X6', 1500, 'https://gazin-images.gazin.com.br/w3E6sCU1rc59TznQYAUtKMOtnQU=/1920x/filters:format(webp):quality(75)/https://gazin-images.gazin.com.br/rfSTzayUZI9d8y2B5-qZVYIaN04=/filters:format(webp):quality(75)/https://gazin-marketplace.s3.amazonaws.com/midias/imagens/2024/08/smartphone-xiaomi-poco-x6-5g-667-octa-core-256gb-8gb-camera-tripla-152408052122.jpg')">
+                <img src="https://gazin-images.gazin.com.br/w3E6sCU1rc59TznQYAUtKMOtnQU=/1920x/filters:format(webp):quality(75)/https://gazin-images.gazin.com.br/rfSTzayUZI9d8y2B5-qZVYIaN04=/filters:format(webp):quality(75)/https://gazin-marketplace.s3.amazonaws.com/midias/imagens/2024/08/smartphone-xiaomi-poco-x6-5g-667-octa-core-256gb-8gb-camera-tripla-152408052122.jpg" alt="Poco X6">
+                <p>Poco X6 - R$ 1680</p>
+                <p>Estoque: 10</p>
+            </div>
+            <div class="product" onclick="addToCart('Poco X6 Pro', 2000, 'https://images.tcdn.com.br/img/img_prod/962703/poco_x6_pro_512gb_12gb_5g_3_cores_1921_1_c57a89604928d46cf5801ae5ef2b8988.jpg')">
+                <img src="https://images.tcdn.com.br/img/img_prod/962703/poco_x6_pro_512gb_12gb_5g_3_cores_1921_1_c57a89604928d46cf5801ae5ef2b8988.jpg" alt="Poco X6 Pro">
+                <p>Poco X6 Pro - R$ 2200</p>
+                <p>Estoque: 5</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catálogo 2 -->
+    <section id="catalog2">
+        <h2>Catálogo de Produtos - Outros Modelos</h2>
+        <div class="catalog-section">
+            <div class="product" onclick="addToCart('Poco X7', 2500, 'https://reidocelular.com.br/wp-content/uploads/2025/01/as-2025-01-13T090207.098.png')">
+                <img src="https://reidocelular.com.br/wp-content/uploads/2025/01/as-2025-01-13T090207.098.png" alt="Poco X7">
+                <p>Poco X7 - R$ 2600</p>
+                <p>Estoque: 0</p>
+            </div>
+            <div class="product" onclick="addToCart('Poco X7 Pro', 3000, 'https://a-static.mlcdn.com.br/1500x1500/smartphone-xiaomi-poco-x7-5g-256gb-8gb-ram-dual-sim-tela-6-67-prata/bendezgames/a9efe5c0d2c411ef805a4201ac18503c/b486088e78b776ebef1208a94df93036.jpeg')">
+                <img src="https://a-static.mlcdn.com.br/1500x1500/smartphone-xiaomi-poco-x7-5g-256gb-8gb-ram-dual-sim-tela-6-67-prata/bendezgames/a9efe5c0d2c411ef805a4201ac18503c/b486088e78b776ebef1208a94df93036.jpeg" alt="Poco X7 Pro">
+                <p>Poco X7 Pro - R$ 3100</p>
+                <p>Estoque: 8</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Carrinho -->
+    <section id="cart" class="cart-section">
+        <h2>Seu Carrinho</h2>
+        <div id="cartItems" class="cart-items"></div>
+        <p id="totalPrice">Total: R$ 0</p>
+        <button onclick="checkout()">Finalizar Compra</button>
+    </section>
+
+    <!-- Checkout -->
+    <section id="checkout">
+        <h2>Checkout</h2>
+        <div class="container">
+            <div class="logo">TecPhone Central</div>
+            <h2>Escolha seu método de pagamento</h2>
+            
+            <label for="bank">Selecione o banco:</label>
+            <select id="bank">
+                <option value="Banco do Brasil">Banco do Brasil</option>
+                <option value="Itaú">Itaú</option>
+                <option value="Bradesco">Bradesco</option>
+                <option value="Nubank">Nubank</option>
+            </select>
+            
+            <br><br>
+            
+            <label for="payment">Forma de pagamento:</label>
+            <select id="payment">
+                <option value="Cartão de Crédito">Cartão de Crédito</option>
+                <option value="Boleto Bancário">Boleto Bancário</option>
+                <option value="PIX">PIX</option>
+            </select>
+            
+            <br><br>
+            
+            <button onclick="confirmPayment()">Confirmar Pagamento</button>
+        </div>
+    </section>
+
+    <script>
+        let cart = [];
+        let total = 0;
+
+        function addToCart(productName, price, image) {
+            cart.push({ productName, price, image });
+            total += price;
+            updateCart();
+        }
+
+        function removeFromCart(index) {
+            total -= cart[index].price;
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartItems = document.getElementById('cartItems');
+            const totalPrice = document.getElementById('totalPrice');
+
+            cartItems.innerHTML = cart.map((item, index) => `
+                <div>
+                    <img src="${item.image}" alt="${item.productName}" width="50">
+                    <p>${item.productName} - R$ ${item.price}</p>
+                    <button class="remove-btn" onclick="removeFromCart(${index})">Remover</button>
+                </div>
+            `).join('');
+            
+            totalPrice.textContent = `Total: R$ ${total}`;
+        }
+
+        function checkout() {
+            alert('Processando pagamento...');
+            cart = [];
+            total = 0;
+            updateCart();
+            alert('Compra realizada com sucesso!');
+        }
+
+        function confirmPayment() {
+            let bank = document.getElementById("bank").value;
+            let payment = document.getElementById("payment").value;
+            alert("Pagamento selecionado:\nBanco: " + bank + "\nForma: " + payment);
+        }
+
+        function openTab(tabName) {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(tabName).classList.add('active');
+        }
+    </script>
+</body>
+</html>
